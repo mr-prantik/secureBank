@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Users/css/user_styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to your Dashboard, {{ request.user.username }}!</h1>
+        <div class="dashboard">
+            <!-- <h2>Your Loan Amount: ${{ loan_amount }}</h2>
+            <h2>Pending Requests: {{ pending_requests }}</h2>
+            Add more data as needed
+             -->
+            {% if pending_loan_requests %}
+                {% for loan_request in pending_loan_requests %}
+                    <p>Borrower: {{ loan_request.borrower.username }}</p>
+                    <p>Amount: {{ loan_request.amount }}</p>
+                    <p>Interest Rate: {{ loan_request.interest_rate }}%</p>
+                    
+                    <!-- Only show lend link if loan_request.id exists -->
+                    {% if loan_request.id %}
+                    <a href="{% url 'lend' loan_request.id %}">Lend Money</a>
+                    {% else %}
+                    <p>No valid loan request found</p>
+                    {% endif %}
+                {% endfor %}
+                {% else %}
+                <p>No loan requests available</p>
+            {% endif %}
+        </div>
+        <a href="{% url 'borrow' %}">Borrow Money</a>
+        <a href="{% url 'lend' loan_request.id %}">Lend Money</a>
+        <a href="{% url 'logout' %}" class="btn">Logout</a>
+    </div>
+</body>
+</html>

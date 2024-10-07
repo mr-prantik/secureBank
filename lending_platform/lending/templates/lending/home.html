@@ -1,0 +1,23 @@
+<!-- lending/templates/lending/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lending/css/styles.css' %}">
+</head>
+<body>
+    <h1>Welcome to the Peer-to-Peer Lending Platform</h1>
+    <p>This is the home page.</p>
+
+    <!-- Register and Login Buttons -->
+    <div class="auth-buttons">
+        <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+        <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+    </div>
+
+    <script src="{% static 'lending/js/scripts.js' %}"></script>
+</body>
+</html>

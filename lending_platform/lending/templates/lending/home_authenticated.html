@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Authenticated</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Users/static/user_styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ request.user.username }}!</h1>
+        <p><a href="{% url 'dashboard' %}" class="btn">Go to Dashboard</a></p>
+        <p><a href="{% url 'logout' %}" class="btn">Logout</a></p>
+        <!-- Add more content here for authenticated users -->
+    </div>
+</body>
+</html>

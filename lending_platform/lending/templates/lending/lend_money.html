@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Lend Money</h2>
+  <p>Borrower: {{ loan_request.borrower.username }}</p>
+  <p>Amount: {{ loan_request.amount }}</p>
+  <p>Interest Rate: {{ loan_request.interest_rate }}%</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Lend Money</button>
+  </form>
+{% endblock %}
